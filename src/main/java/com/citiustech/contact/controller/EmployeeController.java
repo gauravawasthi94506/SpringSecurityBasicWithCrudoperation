@@ -66,7 +66,7 @@ public class EmployeeController {
 		emp.setExpertise(empDetails.getExpertise());
 		emp.setAdr(empDetails.getAdr());*/
 	
-		Address adr=new Address();
+		
 		empDetails.setId(empid);
 		Employee updateEmployee=employeeService.save(empDetails);
 		//System.out.println("employee details are"+empDetails);

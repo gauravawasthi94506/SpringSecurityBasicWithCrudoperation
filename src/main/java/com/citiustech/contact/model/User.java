@@ -1,12 +1,17 @@
 package com.citiustech.contact.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Pattern;
+
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
     private Long id;
+    @Pattern(regexp="^[a-zA-Z0-9]+$", message = "User name can not contain special characters")
+    //@Max(8)
     private String username;
     private String password;
     private String passwordConfirm;

@@ -1,6 +1,10 @@
 package com.citiustech.contact.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,7 +35,8 @@ public class UserFormValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-
+		Pattern p = Pattern.compile("[^A-Za-z0-9]");
+		
 		User user = (User) target;
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
@@ -62,7 +67,15 @@ public class UserFormValidator implements Validator {
 	        if (user.getPasswordConfirm().length()!=0 && (!user.getPasswordConfirm().equals(user.getPassword()))) {
 	            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
 	        }
-
+	        Pattern p1 = Pattern.compile("[^A-Za-z0-9]");
+	        Matcher m = p.matcher(user.getUsername());
+	       // boolean b = m.matches();
+	        boolean b = m.find();
+	        
+	        
+	        if(b){
+	        	errors.rejectValue("username", "Size.userForm.username");
+	        }
 	}
 
 }
