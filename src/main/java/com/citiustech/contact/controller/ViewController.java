@@ -3,11 +3,16 @@ package com.citiustech.contact.controller;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 @Controller
 public class ViewController {
 
+	@PostMapping(value = "/error")
+	public String index() {
+		return "Exception";
+	}
 	/*private JdbcTemplate jt; 
 	
 	@GetMapping(value = "/welcome")

@@ -1,3 +1,7 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html lang="en">
@@ -94,7 +98,7 @@
 						+'","expertise": "' + txtExp
 						+'","adr": {"state": "'+txtState
 							+'","pincode": " '+txtPin+'"}}',
-						
+				    //headers: {'X-CSRF-TOKEN': cookie.csrf},	
 					dataType : 'JSON',
 					crossDomain : true,
 					success : function(resdata) {
@@ -215,6 +219,19 @@
 	}
 </script>
 <body>
+<div class="container">
+
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <form id="logoutForm" method="POST" action="${contextPath}/logout">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
+
+        <h2>Welcome ${pageContext.request.userPrincipal.name} 
+         <a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+
+    </c:if>
+
+</div>
 	<div>
 		<input id="txtName" type="text" placeholder="Name"  ><br> 
 		<input id="txtDes" type="text" placeholder="Designation" ><br>

@@ -23,17 +23,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	
+    	//web.ignoring().antMatchers("/resources/**");
         http
                 .authorizeRequests()
-                    .antMatchers("/resources/**", "/registration").permitAll()
+                    .antMatchers("/resources/**", "/registration","/employees/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
                     .loginPage("/login")
                     .permitAll()
+                .and()
+                .csrf().ignoringAntMatchers("/employees/**")    
                     .and()
                 .logout()
-                    .permitAll();
+                    .permitAll()
+                ;;
     }
 
     @Autowired

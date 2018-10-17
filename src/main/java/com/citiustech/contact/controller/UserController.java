@@ -32,7 +32,7 @@ public class UserController {
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
-       int i=10/0;
+       //int i=10/0;
         return "registration";
     }
 
@@ -65,6 +65,7 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
-        return "welcome";
+        return "index";
     }
+    
 }

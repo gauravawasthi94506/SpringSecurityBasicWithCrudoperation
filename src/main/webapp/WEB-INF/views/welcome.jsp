@@ -8,7 +8,7 @@
 <head>
    
 
-    <title>Create an account</title>
+    <title>Welcome ${pageContext.request.userPrincipal.name} </title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 

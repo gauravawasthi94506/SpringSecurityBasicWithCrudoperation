@@ -80,10 +80,10 @@
 			<scope>provided</scope>
 		</dependency>
 		<!-- JSTL -->
-		<!-- <dependency>
+		  <dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-		</dependency> -->
+		</dependency> 
 		<!-- To compile JSP files -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
